@@ -2,6 +2,9 @@ import { DummyData } from '@/dummy-data';
 import Link from 'next/link';
 import classes from './event-item.module.css';
 import Button from '@/components/ui/button';
+import DateIcon from '@/components/icon/date-icon';
+import AddressIcon from '@/components/icon/address-icon';
+import ArrowRightIcon from '@/components/icon/arrow-right-icon';
 
 function EventItem(props: {items: DummyData }) {
     const { id, description, location, title, image, isFeatured, date } = props?.items;
@@ -17,15 +20,22 @@ function EventItem(props: {items: DummyData }) {
                 <div>
                     <h2>{title}</h2>
                     <div className={classes.date}>
+                        <DateIcon />
                        <time>{eventDate}</time>
                     </div>
                     <div className={classes.address}>
+                        <AddressIcon />
                         <address>{location.replace(', ', '\n')}</address>
                     </div>
                 </div>
                 <div className={classes.actions}>
                     <Button link={`/events/${id}`}>
-                        Explore Event
+                       <span>
+                            Explore Event
+                       </span>
+                        <span className={classes.icon}>
+                            <ArrowRightIcon />
+                        </span>
                     </Button>
                 </div>
             </div>
