@@ -15,7 +15,7 @@ function EventItem(props: {items: DummyData }) {
     });
     return(
         <li className={classes.item}>
-            <img src={image} alt='img'/>
+            <img src={`/${image}`} alt='img'/>
             <div className={classes.content}>
                 <div>
                     <h2>{title}</h2>

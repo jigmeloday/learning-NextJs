@@ -1,5 +1,8 @@
 import { useRouter } from 'next/router';
 import { getSearchData } from '@/dummy-data';
+import EventList from '@/components/events/event-list';
+import ResultsTitle from '@/components/result/results-title';
+import { Fragment } from 'react';
 
 function FilterEvent() {
     const route = useRouter();
@@ -10,9 +13,12 @@ function FilterEvent() {
        return <>hello dick head</>
    }
     const getFilterData = getSearchData(year as number, month as number);
-   console.log(getFilterData)
+   const date = new Date( year as number,  month as number -1)
     return(
-        <>Filter Events</>
+        <Fragment>
+            <ResultsTitle date={date} />
+            <EventList items={getFilterData}/>
+        </Fragment>
     )
 }
 
