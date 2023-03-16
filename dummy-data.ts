@@ -42,4 +42,6 @@ const DUMMY_EVENTS: DummyData[] = [
 
 export const getFeature = () => DUMMY_EVENTS.filter((item ) => item.isFeatured && item );
 
-export const getEventById = (id: string) => DUMMY_EVENTS.find((item) => item.id === id && item)
+export const getEventById = (id: string) => DUMMY_EVENTS.find((item) => item.id === id && item);
+
+export const getAllEvents =  () => DUMMY_EVENTS;
