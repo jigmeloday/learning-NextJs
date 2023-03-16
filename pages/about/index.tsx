@@ -1,7 +1,7 @@
-function Home(){
+function About() {
     return(
         <>hello</>
     )
 }
 
-export default Home
+export default About;
