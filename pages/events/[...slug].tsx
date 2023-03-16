@@ -3,6 +3,7 @@ import { getSearchData } from '@/dummy-data';
 import EventList from '@/components/events/event-list';
 import ResultsTitle from '@/components/result/results-title';
 import { Fragment } from 'react';
+import Button from '@/components/ui/button';
 
 function FilterEvent() {
     const route = useRouter();
@@ -10,7 +11,16 @@ function FilterEvent() {
     const month =  route.query.slug && +route?.query?.slug?.[1];
 
    if ( isNaN(year as any) || isNaN(month as any) || month && month > 12  ){
-       return <>hello dick head</>
+       return <Fragment>
+         <p>
+             No Search Found
+         </p>
+           <div>
+               <Button link='/events'>
+                   Go Back
+               </Button>
+           </div>
+       </Fragment>
    }
     const getFilterData = getSearchData(year as number, month as number);
    const date = new Date( year as number,  month as number -1)

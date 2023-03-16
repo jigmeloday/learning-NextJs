@@ -7,7 +7,7 @@ import AddressIcon from '@/components/icon/address-icon';
 import ArrowRightIcon from '@/components/icon/arrow-right-icon';
 
 function EventItem(props: {items: DummyData }) {
-    const { id, description, location, title, image, isFeatured, date } = props?.items;
+    const { id, location, title, image, isFeatured, date } = props?.items;
     const eventDate = new Date(date).toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'long',
