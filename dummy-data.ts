@@ -5,8 +5,9 @@ export interface DummyData {
     location: string,
     date: string,
     image: string
-    isFeatured:boolean
+    isFeatured: boolean
 }
+
 const DUMMY_EVENTS: DummyData[] = [
     {
         id: 'e1',
@@ -40,12 +41,13 @@ const DUMMY_EVENTS: DummyData[] = [
     },
 ];
 
-export const getFeature = () => DUMMY_EVENTS.filter((item ) => item.isFeatured && item );
+export const getFeature = () => DUMMY_EVENTS.filter( ( item ) => item.isFeatured && item );
 
-export const getEventById = (id: string) => DUMMY_EVENTS.find((item) => item.id === id && item);
+export const getEventById = ( id: string ) => DUMMY_EVENTS.find( ( item ) => item.id === id && item );
 
-export const getAllEvents =  () => DUMMY_EVENTS;
+export const getAllEvents = () => DUMMY_EVENTS;
 
-export const getSearchData = (slug: string[]) =>{
-
-}
+export const getSearchData = ( year: number, month: number ) => DUMMY_EVENTS.filter( ( event ) => {
+    const date = new Date( event.date );
+    return date.getFullYear() === year && date.getUTCMonth() === month - 1 && event
+} );
