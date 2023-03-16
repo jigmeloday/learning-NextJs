@@ -1,4 +1,13 @@
-const DUMMY_EVENTS = [
+export interface DummyData {
+    id: string,
+    title: string,
+    description: string,
+    location: string,
+    date: string,
+    image: string
+    isFeatured:boolean
+}
+const DUMMY_EVENTS: DummyData[] = [
     {
         id: 'e1',
         title: 'Programming for everyone',
@@ -31,3 +40,4 @@ const DUMMY_EVENTS = [
     },
 ];
 
+export const getFeature = () => DUMMY_EVENTS.filter((item ) => item.isFeatured && item )

@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link'
+import { getFeature } from '@/dummy-data';
+import EventList from '@/components/events/event-list';
 
 export default function Home() {
+    const getEvents = getFeature();
   return (
     <>
       <Head>
@@ -10,16 +13,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-          <ul>
-              <li>
-                  <Link href='portfolio'>Portfolio</Link>
-              </li>
-              <li>
-                  <Link href='clients'>Client</Link>
-              </li>
-          </ul>
-      </div>
+        <div>
+            <EventList items={getEvents} />
+        </div>
     </>
   )
 }
