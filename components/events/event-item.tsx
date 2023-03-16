@@ -1,6 +1,7 @@
 import { DummyData } from '@/dummy-data';
 import Link from 'next/link';
 import classes from './event-item.module.css';
+import Button from '@/components/ui/button';
 
 function EventItem(props: {items: DummyData }) {
     const { id, description, location, title, image, isFeatured, date } = props?.items;
@@ -23,7 +24,9 @@ function EventItem(props: {items: DummyData }) {
                     </div>
                 </div>
                 <div className={classes.actions}>
-                    <Link href={`/events/${id}`} > Explore Event </Link>
+                    <Button link={`/events/${id}`}>
+                        Explore Event
+                    </Button>
                 </div>
             </div>
         </li>
