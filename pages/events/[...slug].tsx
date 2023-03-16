@@ -4,6 +4,7 @@ import EventList from '@/components/events/event-list';
 import ResultsTitle from '@/components/result/results-title';
 import { Fragment } from 'react';
 import Button from '@/components/ui/button';
+import ErrorAlert from '@/components/error-alert/error-alert';
 
 function FilterEvent() {
     const route = useRouter();
@@ -12,10 +13,12 @@ function FilterEvent() {
 
    if ( isNaN(year as any) || isNaN(month as any) || month && month > 12  ){
        return <Fragment>
-         <p>
-             No Search Found
-         </p>
-           <div>
+         <ErrorAlert>
+             <p>
+                 No Search Found
+             </p>
+         </ErrorAlert>
+           <div className='center'>
                <Button link='/events'>
                    Go Back
                </Button>
