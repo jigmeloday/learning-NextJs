@@ -21,7 +21,9 @@ export const getAllEvents = async () =>{
    return events;
 }
 
-// export async const getSearchData = ( year: number, month: number ) => DUMMY_EVENTS.filter( ( event ) => {
-//     const date = new Date( event.date );
-//     return date.getFullYear() === year && date.getUTCMonth() === month - 1 && event
-// } );
+export  const getSearchData = async ( year: number, month: number ) => {
+    const data = await getAllEvents();
+   return data.filter( ( event ) => {
+        const date = new Date( event.date );
+        return date.getFullYear() === year && date.getUTCMonth() === month - 1 && event
+    } )};
