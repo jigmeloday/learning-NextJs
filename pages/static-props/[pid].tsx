@@ -3,17 +3,16 @@ import path from 'path';
 import fs from 'fs/promises';
 
 
+async function getData() {
+    const filePath =  path.join(process.cwd(), 'data', 'dummy-backend.json')
+    const jsonData = await fs.readFile(filePath);
+   return JSON.parse(jsonData as any)
+}
+
 export async function getStaticPaths(){
+    const data = await getData();
     return {
-        paths: [
-            {
-                params: { pid: 'p1' },
-            },{
-                params: { pid: 'p2' },
-            },{
-                params: { pid: 'p3' }
-            }
-        ],
+        paths: data.products.map((product: any) => ({params: { pid: product.id }}) ),
         fallback: false
     }
 
@@ -21,9 +20,7 @@ export async function getStaticPaths(){
 
 export async function getStaticProps(context: any){
     const productId = context.params.pid;
-    const filePath =  path.join(process.cwd(), 'data', 'dummy-backend.json')
-    const jsonData = await fs.readFile(filePath);
-    const data = JSON.parse(jsonData as any)
+    const data = await getData();
     return {
         props: data.products.find((item: any) => item.id === productId)
     }
