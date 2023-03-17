@@ -4,13 +4,13 @@ import { Fragment } from 'react';
 import EventSummary from '@/components/event-detail/event-summary';
 import EventLogistics from '@/components/event-detail/event-logistics';
 import EventContent from '@/components/event-detail/event-content';
-import { getAllEvents, getEventById } from '@/helper/api-utils';
+import { getAllEvents, getEventById, getFeature } from '@/helper/api-utils';
 
 export async function getStaticPaths(){
-    const allEvent = await getAllEvents();
+    const allEvent = await getFeature();
     return{
         paths: allEvent.map((event) =>  ({ params: {eventID: event.id } })),
-        fallback: false
+        fallback: 'blocking'
     }
 }
 
