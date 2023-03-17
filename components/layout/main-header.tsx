@@ -11,9 +11,6 @@ function MainHeader() {
                    <li className={classes.li}>
                        <Link href='/events'> Browse All Events </Link>
                    </li>
-                   <li className={classes.li}>
-                       <Link href='/static-props'> Static Props </Link>
-                   </li>
                </ul>
            </nav>
        </header>
