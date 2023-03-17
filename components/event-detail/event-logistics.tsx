@@ -5,7 +5,6 @@ import AddressIcon from '../icon/address-icon';
 
 function EventLogistics(props: any) {
   const { date, address, image, imageAlt } = props;
-
   const humanReadableDate = new Date(date).toLocaleDateString('en-US', {
     day: 'numeric',
     month: 'long',
