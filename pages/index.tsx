@@ -8,7 +8,8 @@ export async function getStaticProps() {
     return{
         props:{
             feature
-        }
+        },
+        revalidate: 1000
     }
 }
 
