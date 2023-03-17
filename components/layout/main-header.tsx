@@ -7,9 +7,12 @@ function MainHeader() {
                <Link href='/'>Events</Link>
            </div>
            <nav className={classes.navigation}>
-               <ul>
-                   <li>
+               <ul className={classes.ui}>
+                   <li className={classes.li}>
                        <Link href='/events'> Browse All Events </Link>
+                   </li>
+                   <li className={classes.li}>
+                       <Link href='/static-props'> Static Props </Link>
                    </li>
                </ul>
            </nav>

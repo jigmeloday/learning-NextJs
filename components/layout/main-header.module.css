@@ -30,6 +30,14 @@
     font-size: 1rem;
 }
 
+.navigation .ui {
+    list-style: none;
+}
+
+.navigation .ui .li{
+    display: inline;
+}
+
 @media (min-width: 768px) {
     .logo {
         font-size: 2.5rem;
