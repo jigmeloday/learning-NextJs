@@ -6,7 +6,7 @@ import DateIcon from '@/components/icon/date-icon';
 import AddressIcon from '@/components/icon/address-icon';
 import ArrowRightIcon from '@/components/icon/arrow-right-icon';
 
-function EventItem(props: {items: DummyData }) {
+function EventItem(props: {items: any }) {
     const { id, location, title, image, isFeatured, date } = props?.items;
     const eventDate = new Date(date).toLocaleDateString('en-US', {
         day: 'numeric',
@@ -25,7 +25,7 @@ function EventItem(props: {items: DummyData }) {
                     </div>
                     <div className={classes.address}>
                         <AddressIcon />
-                        <address>{location.replace(', ', '\n')}</address>
+                        <address>{location?.replace(', ', '\n')}</address>
                     </div>
                 </div>
                 <div className={classes.actions}>
