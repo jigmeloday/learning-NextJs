@@ -3,14 +3,14 @@ import EventSearch from '@/components/events/event-search';
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import { getAllEvents } from '@/helper/api-utils';
-import EventItem from '@/components/events/event-item';
 
 export async function getStaticProps() {
     const events = await getAllEvents();
     return{
         props: {
             events
-        }
+        },
+        revalidate: 60
     }
 }
 
