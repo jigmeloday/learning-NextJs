@@ -11,11 +11,7 @@ export async function getServerSideProps(context: any){
     const month =  params.slug && +params?.slug?.[1];
     const event = await getSearchData( year as number, month as number );
     if ( isNaN(year as any) || isNaN(month as any) || month && month > 12 ) {
-        return {
-            props: {
-                invalid: true
-            }
-        }
+        return { props: { invalid: true } }
     }
     return{
         props: { event, year, month  }
@@ -29,7 +25,7 @@ function FilterEvent(props: any) {
        return <Fragment>
          <ErrorAlert>
              <p>
-                 No Search Found
+                Invalid Search
              </p>
          </ErrorAlert>
            <div className='center'>
