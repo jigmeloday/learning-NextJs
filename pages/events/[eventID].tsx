@@ -5,6 +5,7 @@ import EventSummary from '@/components/event-detail/event-summary';
 import EventLogistics from '@/components/event-detail/event-logistics';
 import EventContent from '@/components/event-detail/event-content';
 import { getAllEvents, getEventById, getFeature } from '@/helper/api-utils';
+import Comments from '@/components/input/comment';
 
 export async function getStaticPaths(){
     const allEvent = await getFeature();
@@ -32,7 +33,7 @@ function EventDetail(props: any) {
         <EventContent>
             <p>{props.event.description}</p>
         </EventContent>
-
+        <Comments eventId={props.event.id} />
     </Fragment>
 }
 

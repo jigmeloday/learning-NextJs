@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import EventList from '@/components/events/event-list';
 import { getFeature } from '@/helper/api-utils';
+import NewsletterRegistration from '@/components/input/newsletter-registration';
 
 export async function getStaticProps() {
     const feature = await getFeature();
@@ -24,6 +25,7 @@ export default function Home(props: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <div>
+            <NewsletterRegistration />
             <EventList items={props.feature} />
         </div>
     </>
