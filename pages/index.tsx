@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link'
 import EventList from '@/components/events/event-list';
 import { getFeature } from '@/helper/api-utils';
 

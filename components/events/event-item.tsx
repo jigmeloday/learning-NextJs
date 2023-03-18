@@ -16,7 +16,7 @@ function EventItem(props: {items: any }) {
     });
     return(
         <li className={classes.item}>
-            <Image src={`/${image}`} alt='img' height={160} width={340} />
+            <Image src={`/${image}`} priority alt='img' height={160} width={340} />
             <div className={classes.content}>
                 <div>
                     <h2>{title}</h2>

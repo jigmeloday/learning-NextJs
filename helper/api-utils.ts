@@ -21,6 +21,8 @@ export const getAllEvents = async () =>{
    return events;
 }
 
+
+
 export  const getSearchData = async ( year: number, month: number ) => {
     const data = await getAllEvents();
    return data.filter( ( event ) => {
