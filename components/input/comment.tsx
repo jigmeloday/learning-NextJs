@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import CommentList from './comment-list';
 import NewComment from './new-comment';
@@ -14,9 +14,15 @@ function Comments(props: any) {
     }
 
     function addCommentHandler(commentData: any) {
-        // send data to API
-    }
+       fetch(`/api/comments/${eventId}`, { method: 'POST', body: JSON.stringify(commentData) }).then(() => {
 
+       })
+    }
+    useEffect(() => {
+        fetch(`/api/comments/${eventId}`, { method: 'GET' }).then((data) => data.json()).then((resp) =>{
+            console.log(resp)
+        })
+    }, [])
     return (
         <section className={classes.comments}>
             <button onClick={toggleCommentsHandler}>
