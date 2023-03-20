@@ -7,8 +7,11 @@ function handler(req: any, res: any) {
     }
 
     if ( req.method === 'GET' ) {
-        console.log('hello')
-        res.status(200).json({ message: 'success' })
+        const dummy = [
+            { id:'c1', name: 'Max', text: 'Test' },
+            { id:'c2', name: 'Max', text: 'Test2' }
+        ]
+        res.status(200).json({ comments: dummy });
     }
 }
 

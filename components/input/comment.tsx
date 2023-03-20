@@ -6,7 +6,7 @@ import classes from './comments.module.css';
 
 function Comments(props: any) {
     const { eventId } = props;
-
+    const [comments, setComments] = useState();
     const [showComments, setShowComments] = useState(false);
 
     function toggleCommentsHandler() {
@@ -20,7 +20,7 @@ function Comments(props: any) {
     }
     useEffect(() => {
         fetch(`/api/comments/${eventId}`, { method: 'GET' }).then((data) => data.json()).then((resp) =>{
-            console.log(resp)
+            setComments(resp)
         })
     }, [])
     return (
@@ -29,7 +29,7 @@ function Comments(props: any) {
                 {showComments ? 'Hide' : 'Show'} Comments
             </button>
             {showComments && <NewComment onAddComment={addCommentHandler} />}
-            {showComments && <CommentList />}
+            {showComments && <CommentList comments={comments}  />}
         </section>
     );
 }
