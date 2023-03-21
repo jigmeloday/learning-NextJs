@@ -8,7 +8,7 @@ function CommentList( props: any ) {
                     <li key={items.id}>
                         <p>{ items.text }</p>
                         <div>
-                            By <address>items.name</address>
+                            By <address>{ items.name }</address>
                         </div>
                     </li>
                 )
