@@ -1,7 +1,6 @@
 import { MongoClient } from 'mongodb'
 const client = new MongoClient('mongodb+srv://jigmelodey:Psycho0209@cluster0.v5jrt.mongodb.net/?retryWrites=true&w=majority');
 
-client.connect().then((err) =>console.log('err', err) )
 async function handler(req: any, res: any) {
     const eventID =  req.query.eventID;
     if ( req.method === 'POST' ) {
@@ -28,6 +27,8 @@ async function handler(req: any, res: any) {
             { id:'c1', name: 'Max', text: 'Test' },
             { id:'c2', name: 'Max', text: 'Test2' }
         ]
+        const db = client.db('event-comments');
+        const comments =  db.collection('comments').find();
         res.status(200).json({ comments: dummy });
         return
     }

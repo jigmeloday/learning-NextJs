@@ -8,7 +8,6 @@ async function handler( req: any, res: any,  ){
             res.status(401).json({ message: 'no email tsk tsk' })
             return
         }
-        client.connect().then((err) => console.log(err)).catch((err) => console.log('error', err))
         const db = client.db('news-letter');
         await db.collection('emails').insertOne({ email })
         res.status(201).json({ message: 'successful' });
