@@ -1,5 +1,5 @@
-import { MongoClient, ServerApiVersion } from 'mongodb'
-const client = new MongoClient('mongodb+srv://jl:L7yxlNsDb5ORtu1M@cluster0.yakvrgz.mongodb.net/?retryWrites=true&w=majority');
+import { MongoClient } from 'mongodb'
+const client = new MongoClient('mongodb+srv://jigmelodey:Psycho0209@cluster0.v5jrt.mongodb.net/?retryWrites=true&w=majority');
 
 async function handler( req: any, res: any,  ){
     if ( req.method === 'POST' ) {
@@ -8,6 +8,7 @@ async function handler( req: any, res: any,  ){
             res.status(401).json({ message: 'no email tsk tsk' })
             return
         }
+        client.connect().then((err) => console.log(err)).catch((err) => console.log('error', err))
         const db = client.db('news-letter');
         await db.collection('emails').insertOne({ email })
         res.status(201).json({ message: 'successful' });
