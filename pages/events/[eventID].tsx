@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import EventSummary from '@/components/event-detail/event-summary';
 import EventLogistics from '@/components/event-detail/event-logistics';
 import EventContent from '@/components/event-detail/event-content';
-import { getAllEvents, getEventById, getFeature } from '@/helper/api-utils';
+import { getEventById, getFeature } from '@/helper/api-utils';
 import Comments from '@/components/input/comment';
 
 export async function getStaticPaths(){

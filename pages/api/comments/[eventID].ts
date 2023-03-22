@@ -28,8 +28,8 @@ async function handler(req: any, res: any) {
             { id:'c2', name: 'Max', text: 'Test2' }
         ]
         const db = client.db('event-comments');
-        const comments =  db.collection('comments').find();
-        res.status(200).json({ comments: dummy });
+        const comments =  await db.collection('comments').find().sort({_id: -1 }).toArray();
+        res.status(200).json({ comments: comments });
         return
     }
 }
