@@ -1,8 +1,13 @@
-import { MongoClient } from 'mongodb'
-const client = new MongoClient('mongodb+srv://jigmelodey:Psycho0209@cluster0.v5jrt.mongodb.net/?retryWrites=true&w=majority');
+import { connectionDatabase, getAllDocument, insertDocument } from '@/helper/db-utils';
 
 async function handler(req: any, res: any) {
+    let client;
     const eventID =  req.query.eventID;
+    try{
+        client = await connectionDatabase();
+    } catch ( err ){
+        res.status(500).json(err )
+    }
     if ( req.method === 'POST' ) {
         const data = JSON.parse(req.body);
         if ( !data ){
@@ -15,21 +20,24 @@ async function handler(req: any, res: any) {
             text: data.text,
             eventID
         }
-        const db = client.db('event-comments');
-        await db.collection('comments').insertOne( { newComment });
-        await client.close();
-        res.status(201).json({ message: 'success' })
+
+        try{
+            await insertDocument(client, 'event-comments', 'comments', newComment);
+            await client?.close();
+            res.status(201).json({ message: 'success' })
+        } catch ( e ) {
+            res.status(500).json({ message: 'error on' })
+        }
         return
     }
 
     if ( req.method === 'GET' ) {
-        const dummy = [
-            { id:'c1', name: 'Max', text: 'Test' },
-            { id:'c2', name: 'Max', text: 'Test2' }
-        ]
-        const db = client.db('event-comments');
-        const comments =  await db.collection('comments').find().sort({_id: -1 }).toArray();
-        res.status(200).json({ comments: comments });
+        try{
+            const comments  = await getAllDocument(client, 'event-comments', 'comments');
+            res.status(200).json({ comments });
+        } catch ( e ) {
+            res.status(500).json(e )
+        }
         return
     }
 }
