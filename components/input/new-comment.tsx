@@ -1,16 +1,21 @@
-import { useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import classes from './new-comment.module.css';
+import NotificationContext from '@/store/notification/notification-context';
 
 function NewComment(props: any) {
     const [isInvalid, setIsInvalid] = useState(false);
-
+    const notification = useContext(NotificationContext);
     const emailInputRef: any = useRef();
     const nameInputRef: any = useRef();
     const commentInputRef: any = useRef();
 
     function sendCommentHandler(event: any) {
         event.preventDefault();
-
+        notification.showNotification({
+            message: 'Sending Comments',
+            status: 'pending',
+            title: 'Sending...'
+        });
         const enteredEmail = emailInputRef?.current?.value ;
         const enteredName = nameInputRef?.current.value;
         const enteredComment = commentInputRef?.current.value;
