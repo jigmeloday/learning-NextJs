@@ -16,11 +16,17 @@ function NewsletterRegistration() {
         event.preventDefault();
         fetch('/api/news-letter', { method: 'POST', body: JSON.stringify( { email: emailRef.current.value })}).then(
             (res) =>{
-                if ( res ) {
+                if ( res.ok ) {
                     notification.showNotification({
                         message: 'Successfully Register',
                         status: 'success',
                         title: 'Success'
+                    })
+                } else {
+                    notification.showNotification({
+                        message: 'Sorry try again tsk tsk',
+                        status: 'error',
+                        title: 'Failed'
                     })
                 }
             }
