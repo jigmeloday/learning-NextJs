@@ -10,6 +10,7 @@ function Comments(props: any) {
     const [comments, setComments] = useState();
     const [showComments, setShowComments] = useState(false);
     const notification = useContext(NotificationContext);
+    const [isFetching, setFetching] = useState(false);
 
     function toggleCommentsHandler() {
         setShowComments((prevStatus) => !prevStatus);
@@ -39,8 +40,10 @@ function Comments(props: any) {
        })
     }
     useEffect(() => {
+        setFetching(true)
         fetch(`/api/comments/${eventId}`, { method: 'GET' }).then((data) => data.json()).then((resp) =>{
             setComments(resp)
+            setFetching(false)
         })
     }, [])
     return (
@@ -49,7 +52,7 @@ function Comments(props: any) {
                 {showComments ? 'Hide' : 'Show'} Comments
             </button>
             {showComments && <NewComment onAddComment={addCommentHandler} />}
-            {showComments && <CommentList comments={comments}  />}
+            {showComments && <CommentList isLoading={isFetching} comments={comments}  />}
         </section>
     );
 }

@@ -24,7 +24,7 @@ export function NotificationContextProvider(props: any) {
     }
 
     useEffect(() => {
-        if ( active && active?.notification?.status !== 'pending' ) {
+        if ( active && active?.status !== 'pending' ) {
             const timer = setTimeout(() => {
                 hideNotificationHandler()
             }, 3000);
